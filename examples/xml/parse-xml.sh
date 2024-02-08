@@ -15,7 +15,8 @@ inputQuoted="$(echo '""' | jq '$s' --arg s "$input")"
 outputJson="$(
   nix-instantiate --expr --json --eval --strict --arg input "$inputQuoted" '
     { input }:
-    with import ./parse-xml.nix;
+    let pkgs = import <nixpkgs> {}; in
+    with pkgs.callPackage ./parse-xml.nix {};
     printYaml (parseXml input).value
   '
 )"

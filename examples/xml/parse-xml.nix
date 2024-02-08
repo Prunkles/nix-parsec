@@ -11,10 +11,10 @@
   TODO css selector parser + compiler
 */
 
+{ lib, callPackage }:
+
 let
   nix-parsec = import ../../default.nix;
-  inherit (import <nixpkgs> {}) lib;
-  inherit ((import <nixpkgs> {}).pkgs) callPackage;
   inherit (nix-parsec) lexer;
 in
 

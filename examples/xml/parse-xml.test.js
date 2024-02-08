@@ -142,8 +142,8 @@ function main() {
   const { title, sections } = parseTests(casesFile);
   console.log(`running tests: ${title}`);
   const parse = getParse(
-    "(import ./parse-xml.nix).parseXml",
-    "(import ./parse-xml.nix).printYaml",
+    "((import <nixpkgs> {}).callPackage ./parse-xml.nix {}).parseXml",
+    "((import <nixpkgs> {}).callPackage ./parse-xml.nix {}).printYaml",
   );
   const newTests = [];
   newTests.push(`# ${title}`);
